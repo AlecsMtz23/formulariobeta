@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selección de Fase</title>
+  <style>
+    :root {
+      --primary: #4155d9;
+      --secondary: #0d7e27;
+      --accent: #c43d3d;
+      --light: #f8fafc;
+      --dark: #2d3748;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 15px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      padding: 18px 20px 12px;
+      text-align: center;
+    }
+
+    .school-name {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-bottom: 3px;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 1.7rem;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-bottom: 8px;
+      font-weight: 300;
+    }
+
+    .content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 14px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 160px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: #143a70;
+    }
+
+    .btn-secondary {
+      background: var(--secondary);
+    }
+
+    .btn-secondary:hover {
+      background: #085816;
+    }
+
+    .btn-accent {
+      background: var(--accent);
+    }
+
+    .btn-accent:hover {
+      background: #a83232;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #6c757d;
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+      background: var(--light);
+      margin-top: 30px;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      .container {
+        border-radius: 10px;
+      }
+      .content {
+        padding: 15px;
+      }
+      .buttons {
+        gap: 12px;
+      }
+      .btn {
+        width: 100%;
+        max-width: 200px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      .subtitle {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="school-name">Escuela: Rene Mascareñas Miranda</div>
+      <h1>Seleccione la Fase</h1>
+      <p class="subtitle">Elija la fase correspondiente para continuar</p>
+    </header>
+
+    <div class="content">
+      <div class="buttons">
+        <a href="form1.html" class="btn btn-primary">Fase 3</a>
+        <a href="form4.html" class="btn btn-secondary">Fase 4</a>
+        <a href="form5.html" class="btn btn-accent">Fase 5</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>Sistema de Evaluación Académica 2025 | Hecho por Alejandro Martinez</p>
+    </footer>
+  </div>
+</body>
+</html>
