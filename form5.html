@@ -662,10 +662,16 @@
                 </div>
                 
                 <div class="form-row">
-                    <div class="form-group">
-                        <label for="teacherName"><i class="fas fa-chalkboard-user"></i> Nombre del Docente:</label>
-                        <input type="text" id="teacherName" placeholder="Ingrese su nombre completo">
-                    </div>
+                   <div class="form-group">
+    <label for="teacherSelect"><i class="fas fa-chalkboard-user"></i> Docente:</label>
+    <select id="teacherSelect">
+        <option value="" disabled selected>Seleccione el docente</option>
+        <option value="CENTENO AGUIRRE SALVADOR EDUARDO">CENTENO AGUIRRE SALVADOR EDUARDO</option>
+        <option value="CHACON CARRILLO CRUZ ELVA">CHACON CARRILLO CRUZ ELVA</option>
+        <option value="GALVAN BARRON PEDRO LUIS">GALVAN BARRON PEDRO LUIS</option>
+        <option value="GONZALEZ SANTANA JORGE ARTURO">GONZALEZ SANTANA JORGE ARTURO</option>
+    </select>
+</div>
                     
                     <div class="form-group">
                         <label for="groupSelect"><i class="fas fa-users"></i> Grupo Fase 5:</label>
@@ -829,7 +835,7 @@
             // Obtener datos del formulario
             const studentName = document.getElementById('studentName').value || "Alumno";
             const group = document.getElementById('groupSelect').value || "Grupo no especificado";
-            const teacherName = document.getElementById('teacherName').value || "Docente no especificado";
+            const teacherName = document.getElementById('teacherSelect').value || "Docente no especificado";
             
             // Validar que se hayan respondido todas las preguntas
             let allAnswered = true;
@@ -1011,7 +1017,7 @@
             
             const studentNamePDF = document.getElementById('studentName').value || "Alumno";
             const groupPDF = document.getElementById('groupSelect').value || "Grupo no especificado";
-            const teacherNamePDF = document.getElementById('teacherName').value || "Docente no especificado";
+            const teacherNamePDF = document.getElementById('teacherSelect').value || "Docente no especificado";
             const currentDate = new Date().toLocaleDateString();
             
             const margin = 15;
@@ -1069,8 +1075,8 @@
             
             pdf.setFont('helvetica', 'normal');
             pdf.text(`Nombre: ${studentNamePDF}`, margin + 5, cursorY + 15);
-            pdf.text(`Grupo: ${groupPDF}`, margin + 70, cursorY + 15);
-            pdf.text(`Docente: ${teacherNamePDF}`, margin + 120, cursorY + 15);
+            pdf.text(`Grupo: ${groupPDF}`, margin + 120, cursorY + 15);
+            pdf.text(`Docente: ${teacherNamePDF}`, margin + 5, cursorY + 21);
             
             cursorY += 30;
             
@@ -1175,3 +1181,4 @@
     </script>
 </body>
 </html>
+
