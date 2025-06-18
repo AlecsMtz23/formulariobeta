@@ -690,6 +690,17 @@
                         <label for="studentName"><i class="fas fa-signature"></i> Nombre del Estudiante:</label>
                         <input type="text" id="studentName" placeholder="Ingrese el nombre completo del estudiante">
                     </div>
+                    
+<div class="form-row">
+    <div class="form-group">
+        <label for="neeStatus"><i class="fas fa-brain"></i> El estudiante enfrenta Dificultades de Aprendizaje, de la Socialización o del Desarrollo (NEE):</label>
+        <select id="neeStatus" class="custom-select">
+            <option value="" disabled selected>Seleccione opción</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select>
+    </div>
+</div>
                 </div>
             </div>
             
@@ -837,22 +848,27 @@
             const teacherName = document.getElementById('teacherSelect').value || "Docente no especificado";
             
             // Validar que se hayan respondido todas las preguntas
-            let allAnswered = true;
-            const responses = [];
-            
-            for (let i = 0; i < preguntas.length; i++) {
-                const selectedOption = document.querySelector(`.option.selected[data-question="${i}"]`);
-                if (!selectedOption) {
-                    allAnswered = false;
-                    // Resaltar pregunta no respondida
-                    document.querySelectorAll('.question-card')[i].style.animation = "pulse 0.5s 3";
-                    setTimeout(() => {
-                        document.querySelectorAll('.question-card')[i].style.animation = "";
-                    }, 1500);
-                } else {
-                    responses.push(selectedOption.getAttribute('data-value'));
-                }
-            }
+let allAnswered = true;
+const responses = [];
+
+// 1. Validar preguntas principales (1-10)
+for (let i = 0; i < preguntas.length; i++) {
+    const selectedOption = document.querySelector(`.option.selected[data-question="${i}"]`);
+    if (!selectedOption) {
+        allAnswered = false;
+        document.querySelectorAll('.question-card')[i].style.animation = "pulse 0.5s 3";
+    } else {
+        responses.push(selectedOption.getAttribute('data-value'));
+    }
+}
+
+// 2. Validar campo NEE (nuevo)
+const neeStatus = document.getElementById('neeStatus');
+if (!neeStatus.value) {
+    allAnswered = false;
+    neeStatus.style.animation = "pulse 0.5s 3";
+    setTimeout(() => neeStatus.style.animation = "", 1500);
+}
             
             if (!allAnswered) {
                 alert("Por favor, responda todas las preguntas antes de generar el gráfico.");
@@ -1017,6 +1033,7 @@
             const studentNamePDF = document.getElementById('studentName').value || "Alumno";
             const groupPDF = document.getElementById('groupSelect').value || "Grupo no especificado";
             const teacherNamePDF = document.getElementById('teacherSelect').value || "Docente no especificado";
+            const neeStatusPDF = document.getElementById('neeStatus').value || "No especificado";
             const currentDate = new Date().toLocaleDateString();
             
             const margin = 15;
@@ -1076,6 +1093,7 @@
             pdf.text(`Nombre: ${studentNamePDF}`, margin + 5, cursorY + 15);
             pdf.text(`Grupo: ${groupPDF}`, margin + 120, cursorY + 15);
             pdf.text(`Docente: ${teacherNamePDF}`, margin + 5, cursorY + 21);
+            pdf.text(`Enfrenta DASoD (NEE): ${neeStatusPDF}`, margin + 120, cursorY + 21);
             
             cursorY += 30;
             
